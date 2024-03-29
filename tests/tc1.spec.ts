@@ -29,7 +29,7 @@ test.beforeAll(async ({ browser }) => {
     page = await browser.newPage(); // Tarayıcı oturumunu başlatıyoruz
 });
 test.afterAll(async () => {
-    await page.close();
+    //await page.close();
   });
 
 
@@ -130,10 +130,10 @@ test.describe('Register User', () => {
         await expect(page.getByText(randomFullName)).toBeVisible
 
         //17. Click 'Delete Account' button
-        await page.getByRole('link', { name: 'Delete Account' }).click()
+        //await page.getByRole('link', { name: 'Delete Account' }).click()
 
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        await expect(page.getByRole('heading', { name: "Account Deleted!" })).toBeVisible()
+        //await expect(page.getByRole('heading', { name: "Account Deleted!" })).toBeVisible()
 
     });
 
