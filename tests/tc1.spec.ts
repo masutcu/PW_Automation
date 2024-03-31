@@ -30,20 +30,20 @@ test.beforeAll(async ({ browser }) => {
 });
 test.afterAll(async () => {
     //await page.close();
-  });
+});
 
 
-test.describe('Register User', () => {
+test.describe('TC1_Register User', () => {
     let randomFullName, randomEmail;
-    test( "Navigate url", async () => {
-    
+    test("Navigate url", async () => {
+
         //Navigate to url 'http://automationexercise.com' AND Verify that home page is visible successfully
         await page.goto('/');
         const title = await page.title();
         console.log("Sayfa Başlığı:", title);
         await expect(page).toHaveTitle(/Automation Exercise/);
     });
-    
+
     test('Click on Signup / Login button And Verify New User Signup', async () => {
 
         //await page.getByText("Login").click()

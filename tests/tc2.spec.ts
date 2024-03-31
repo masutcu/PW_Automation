@@ -25,7 +25,7 @@ test.afterAll(async () => {
   });
 
 
-test.describe('Register User', () => {
+test.describe('TC2_Login User with correct email and password', () => {
     let randomFullName, randomEmail;
     test( "Navigate url", async () => {
         //2. Navigate to url 'http://automationexercise.com'
@@ -54,7 +54,7 @@ test.describe('Register User', () => {
         await singUpForm.getByPlaceholder('Password').fill(process.env.PSW)
         await singUpForm.getByRole('button', { name: 'Login' }).click()
         //8. Verify that 'Logged in as username' is visible
-        await page.waitForTimeout(1000) //5 sn bekler
+        await page.waitForTimeout(1000) //1 sn bekler
         await expect(page.getByText(' Logged in as ')).toBeVisible
         await expect(page.getByText(process.env.USERNAME)).toBeVisible
         //9. Click 'Delete Account' button

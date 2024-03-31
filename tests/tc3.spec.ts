@@ -23,7 +23,7 @@ test.afterAll(async () => {
 });
 
 
-test.describe('Register User', () => {
+test.describe('TC3_Login User with incorrect email and password', () => {
     let randomFullName, randomEmail;
     test("Navigate url", async () => {
         //2. Navigate to url 'http://automationexercise.com'

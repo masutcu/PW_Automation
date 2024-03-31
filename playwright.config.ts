@@ -14,7 +14,7 @@ export default defineConfig({
 
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://automationexercise.com',
-    viewport: { width: 1536, height: 864 },
+    browserName: 'chromium',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     video: {
@@ -30,6 +30,9 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      use: { ...devices['Desktop Chrome'],
+      viewport: { width: 1520, height: 860 },
+     },
     },
 
     {
