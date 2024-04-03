@@ -27,7 +27,7 @@ test.afterAll(async () => {
 
 
 test.describe('TC1_Register User', () => {
-    let randomFullName, randomEmail;
+    
     test("Navigate url", async () => {
         //2. Navigate to url 'http://automationexercise.com'
         //3. Verify that home page is visible successfully

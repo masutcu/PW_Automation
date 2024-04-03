@@ -6,15 +6,20 @@ export default defineConfig({
   globalTimeout: 60000,
   timeout: 40000, //default 30sn
   expect: {
-    timeout: 3000 //default 5sn
+    timeout: 10000 //default 5sn
   },
-  retries: 1,
+   /*Run tests in files in parallel */
+   fullyParallel:false,
+   /* Retry on CI only */
+   retries: process.env.CI ? 2 : 1,
+   /* Opt out of parallel tests on CI. */
+   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
 
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://automationexercise.com',
-    browserName: 'chromium',
+    
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     video: {
