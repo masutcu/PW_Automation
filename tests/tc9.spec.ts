@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-//Test Case 8: Verify All Products and product detail page
+//Test Case 9: Search Product
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
 //3. Verify that home page is visible successfully
@@ -19,7 +19,7 @@ test.afterAll(async () => {
 });
 
 
-test.describe('TC8_Verify All Products and product detail page', () => {
+test.describe('Test Case 9: Search Product', () => {
 
     test("Navigate url", async () => {
         //2. Navigate to url 'http://automationexercise.com'
@@ -31,7 +31,7 @@ test.describe('TC8_Verify All Products and product detail page', () => {
 
     });
 
-    test("Product Page", async () => {
+    test("Search Product", async () => {
         //4. Click on 'Products' button
         //5. Verify user is navigated to ALL PRODUCTS page successfully
         await page.getByRole('link', { name: 'Products' }).click()
@@ -60,6 +60,7 @@ test.describe('TC8_Verify All Products and product detail page', () => {
                 console.log("Element içinde '"+searchText+"' kelimesi bulundu.");
             } else {
                 console.log(`Element içinde '${searchText}' kelimesi bulunamadı.`); //farklı kullanımlar
+                //console.log("Element içinde '" , searchText , "' kelimesi bulunamadı.");
             }
         }
 
