@@ -235,7 +235,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
         await page.locator('.form-control').nth(5).click()
         await page.waitForTimeout(1000)
         await page.goBack()
-
+        
 
         //18. Verify success message 'Your order has been placed successfully!'  
         //div[id='success_message'] 

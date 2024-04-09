@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test'
-import { faker } from '@faker-js/faker'
+//import { test, expect } from '@playwright/test'
+const { test,expect } = require('@playwright/test');
 
 
 //Test Case 2: Login User with correct email and password

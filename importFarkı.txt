@@ -1,0 +1,17 @@
+İki farklı import yöntemi, CommonJS ve ECMAScript modülü syntax'lerini temsil eder. Bu modüllerin kullanımı ve avantajları aşağıda açıklanmıştır:
+
+CommonJS (const { test, expect } = require('@playwright/test');):
+
+CommonJS, Node.js ortamında yaygın olarak kullanılan bir modül sistemidir.
+require() fonksiyonu ile modüller yüklenir ve değişkenler bu modüllerin içinden çıkarılır.
+Bu yöntem, ECMAScript modülü desteği bulunmayan Node.js sürümlerinde yaygın olarak kullanılır.
+Node.js'de genellikle bu yöntemle modül yüklemesi yapılır.
+
+ECMAScript Modülü (import { test, expect } from '@playwright/test';):
+
+ECMAScript Modülü (ESM), JavaScript'in standart modül sistemidir ve modern tarayıcılar ve Node.js sürümleri tarafından desteklenir.
+import ve export anahtar kelimeleri ile modüller yüklenir ve dışa aktarılır.
+Daha modern bir yazımı vardır ve genellikle modern JavaScript projelerinde kullanılır.
+İçe aktarma ve dışa aktarma işlemleri daha açık ve okunabilir hale gelir.
+import/export syntax'ini kullanarak, modüllerin yanı sıra spesifik özellikleri veya fonksiyonları da içe aktarabilir veya dışa aktarabilirsiniz.
+Her iki yöntemde de sonuç olarak aynı modüller yüklenir ve kullanılır. Hangi yöntemin tercih edilmesi gerektiği, kullanılan platform ve kişisel tercihlere bağlıdır. Eğer projenizde ECMAScript modülü desteği bulunuyorsa, genellikle ECMAScript modülü syntax'ini tercih etmek daha modern ve okunabilir bir kod sağlar. Ancak, CommonJS yöntemi daha eski projelerde veya Node.js'nin eski sürümlerinde kullanılmaya devam edebilir.
