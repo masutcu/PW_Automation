@@ -33,7 +33,7 @@ test.describe('TC5_Register User with existing email', () => {
         await expect(page).toHaveTitle(/Automation Exercise/);
     });
 
-    test('Click on Signup / Login button And Verify New User Signup', async () => {
+    test('Click on Signup button - negative', async () => {
 
         //await page.getByText("Login").click()
         //veya

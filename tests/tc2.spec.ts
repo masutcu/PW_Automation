@@ -37,7 +37,7 @@ test.describe('TC2_Login User with correct email and password', () => {
         await expect(page).toHaveTitle(/Automation Exercise/);
     });
     
-    test('Click on Signup / Login button And Verify New User Signup', async () => {
+    test('Click on  Login button ', async () => {
         //4. Click on 'Signup / Login' button
         //5. Verify 'Login to your account' is visible
         await page.getByRole('link', { name: ' Signup ' }).click()
@@ -46,9 +46,6 @@ test.describe('TC2_Login User with correct email and password', () => {
         //6. Enter correct email address and password
         //7. Click 'login' button
         //form alanını tanımladık 
-
-
-
         const singUpForm = page.locator('.login-form').first()
         await singUpForm.getByPlaceholder('Email Address').pressSequentially(process.env.EMAIL, { delay: 100 })
         await singUpForm.getByPlaceholder('Password').fill(process.env.PSW)

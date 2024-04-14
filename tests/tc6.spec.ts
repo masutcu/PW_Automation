@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { faker } from '@faker-js/faker'
+
 /*
 BU TASK İÇERİSİNDE loadFile, alert window, iframe, navigate browser,
 Test Case 6: Contact Us Form
@@ -26,7 +26,7 @@ test.afterAll(async () => {
 });
 
 
-test.describe('TC1_Register User', () => {
+test.describe('Test Case 6: Contact Us Form', () => {
     
     test("Navigate url", async () => {
         //2. Navigate to url 'http://automationexercise.com'
@@ -39,7 +39,7 @@ test.describe('TC1_Register User', () => {
         console.log("height", await page.viewportSize().height)
     });
 
-    test('Click on Signup / Login button And Verify New User Signup', async () => {
+    test('Contact Us', async () => {
 
         //4. Click on 'Contact Us' button
         //5. Verify 'GET IN TOUCH' is visible

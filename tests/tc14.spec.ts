@@ -123,7 +123,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
         await loginForm.locator("#optin").click()
 
         //Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        await loginForm.locator('#first_name').fill('mehmet')
+        await loginForm.locator('#first_name').fill('Testby')
         await loginForm.locator('#last_name').fill(surname)
         await loginForm.locator('#company').fill(company)
         await loginForm.locator('#address1').fill(street)

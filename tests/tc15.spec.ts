@@ -44,10 +44,8 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
     });
 
-    test('Click on Signup / Login button And Verify New User Signup', async () => {
+    test('Click on Signup  button ', async () => {
         //4. Click 'Signup / Login' button
-        //5. Fill all details in Signup and create account
-        //6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
         await page.getByRole('link', { name: ' Signup ' }).click()
         
         //const randomFullName1 = faker.person.fullName({ firstName: 'Ali' })//ismi ali olsun soy isim değişik
@@ -65,9 +63,9 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     
     })
 
-    test('Login Form Fill details: Title, Name, Email, Password, Date of birth', async () => {
-
-        //Fill details: Title, Name, Email, Password, Date of birth     
+    test('Fill all details in Signup and create account', async () => {
+        //5. Fill all details in Signup and create account
+        //6. Verify 'ACCOUNT CREATED!' and click 'Continue' button   
         const loginForm = page.locator('.login-form')
         //radio button
         await loginForm.getByRole('radio', { name: 'Mr.' }).first().check()
@@ -210,11 +208,6 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
         await page.locator('.form-control').nth(2).fill('123')
         await page.locator('.form-control').nth(3).fill('01')
         await page.locator('.form-control').nth(4).fill('2054')
-        /*Bu bİr ALERT Message
-        page.on('dialog', async (d) => {
-            console.log("message: ", d.message());
-            expect(d.message()).toContain("Your order has been placed successfully!")
-        })*/
         await page.waitForTimeout(1000)
         await page.locator('.form-control').nth(5).click()
         await page.waitForTimeout(1000)

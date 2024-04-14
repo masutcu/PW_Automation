@@ -35,7 +35,7 @@ test.describe('TC3_Login User with incorrect email and password', () => {
         await expect(page).toHaveTitle(/Automation Exercise/);
     });
 
-    test('Click on Signup / Login button And Verify New User Signup', async () => {
+    test('Click on Login button', async () => {
         //4. Click on 'Signup / Login' button
         //5. Verify 'Login to your account' is visible
         await page.getByRole('link', { name: ' Signup ' }).click()

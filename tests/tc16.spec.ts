@@ -43,7 +43,7 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
     });
 
-    test('Click on Signup / Login button ', async () => {
+    test('Click on Login button ', async () => {
         //4. Click on 'Signup / Login' button
         //5. Verify 'Login to your account' is visible
         await page.getByRole('link', { name: ' Signup ' }).click()
@@ -153,21 +153,15 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     test('Payment Detail Form', async () => {
         //13. Enter payment details: Name on Card, Card Number, CVC, Expiration date
         //14. Click 'Pay and Confirm Order' button
-        await page.locator('.form-control').first().fill('Test BySUTCU')
+        await page.locator('.form-control').first().fill('TestBy SUTCU')
         await page.locator('.form-control').nth(1).fill('1234123412341234')
         await page.locator('.form-control').nth(2).fill('123')
         await page.locator('.form-control').nth(3).fill('01')
         await page.locator('.form-control').nth(4).fill('2054')
-        /*Bu bİr ALERT Message
-        page.on('dialog', async (d) => {
-            console.log("message: ", d.message());
-            expect(d.message()).toContain("Your order has been placed successfully!")
-        })*/
         await page.waitForTimeout(1000)
         await page.locator('.form-control').nth(5).click()
         await page.waitForTimeout(1000)
         await page.goBack()
-
 
         //15. Verify success message 'Your order has been placed successfully!'  
         const message = await page.locator("div[id='success_message'] div[class='alert-success alert']").innerText();
@@ -179,9 +173,10 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     test('Delete Account', async () => {
 
         //16. Click 'Delete Account' button
-        //await page.locator('.fa-trash-o').click()
+        //hesabı silmek istemediğimiçin kapattım
+        //await page.locator('.fa-trash-o').click() 
         //17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
-        expect(await page.locator('h2 b').innerText()).toBe('ACCOUNT DELETED!')
+        //expect(await page.locator('h2 b').innerText()).toBe('ACCOUNT DELETED!')
 
     });
 

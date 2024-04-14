@@ -1,0 +1,17 @@
+testcase1: Faker, SignUp, 
+testcase2: Login, .env,
+testcase3: Login-Negative, 
+testcase4: Login, .env,
+testcase5: SignUp-Negative, .env, Faker, 
+testcase6: Contact Us, Upload file, Alert, textContent(), page.viewportSize(), iframe,
+testcase7: Test Cases Page,
+testcase7Fixture: Fixture, Test Cases Page, 
+testcase8: Products Details Page, for loop
+testcase9: SearchBox, forloop(aranan rün ismi element label inde varmı?)
+testcase10: Scroll, Subscription,
+testcase11: Scroll, Subscription, 
+testcase12: Add Products, hover(), 
+testcase13: Products Details for loop, JS evaluate(), innerText(),
+testcase14: Faker, Add Products, Proceed To Checkout, .env, Address Details, lambda, 
+testcase15: SingUp, CreateAccount, Faker, .env, lambda, 
+testcase16: Login, Add Products, Scroll, lambda, innerText(),
