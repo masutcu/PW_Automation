@@ -10,8 +10,10 @@ testcase8: Products Details Page, for loop
 testcase9: SearchBox, forloop(aranan rün ismi element label inde varmı?)
 testcase10: Scroll, Subscription,
 testcase11: Scroll, Subscription, 
-testcase12: Add Products, hover(), 
+testcase12: Add Products, hover(), reklam, 
 testcase13: Products Details for loop, JS evaluate(), innerText(),
 testcase14: Faker, Add Products, Proceed To Checkout, .env, Address Details, lambda, 
 testcase15: SingUp, CreateAccount, Faker, .env, lambda, 
 testcase16: Login, Add Products, Scroll, lambda, innerText(),
+testcase17: Add Products, Cart, Scroll, textContent(), 
+testcase18: Catagories, reklam

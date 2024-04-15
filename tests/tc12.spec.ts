@@ -34,13 +34,16 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     });
 
     test("Add Products in Cart", async () => {
-        //4. Click on 'Products' button      
-        await page.getByRole('link', { name: 'Products' }).click()
-
+        //4. Click on 'Products' button  
+        
         //reklam
-        await page.goBack()
-        await page.goForward()
-        await page.waitForTimeout(2000)
+        await page.route("**/*", route => {
+            route.request().url().startsWith("https://googleads.") ?
+              route.abort() : route.continue();
+            return;
+          })
+        
+        await page.getByRole('link', { name: 'Products' }).click()
 
         //5. Hover over first product and click 'Add to cart'
         //6. Click 'Continue Shopping' button

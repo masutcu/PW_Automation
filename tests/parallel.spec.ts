@@ -7,10 +7,10 @@ import { faker } from '@faker-js/faker'
 //terminalden kod: npx playwright test parallel.spec.ts --headed  ==>4 testi 3 browser (yani 12 test ) 6 worker çalıştırır
 
 
-test.describe.configure({ mode: 'parallel' });
+test.describe.configure({ mode: 'parallel' }); // bu tanımlama ile bir dosyada 1 den fazla worker çalıştıracağız.
 
 test.describe('TC3_Login User with incorrect email and password', () => {
-    test.describe.configure({ mode: 'serial' });
+    test.describe.configure({ mode: 'serial' }); // bu tanımlama ile her test için worker görevlendirmesini engelliyor ve testleri birbirine bağlıyoruz.
     let randomFullName, randomEmail;
     let page; // Tarayıcı oturumunu burada tanımlıyoruz
     test.beforeAll(async ({ browser }) => {
