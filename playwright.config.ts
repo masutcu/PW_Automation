@@ -36,9 +36,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'],
-      viewport: { width: 1520, height: 860 },
-     },
+      use: { browserName: 'chromium',
+      video: {
+        mode: 'on-first-retry',
+        size: { width: 1920, height: 1080 }
+        },
+      }
     },
 
     {
@@ -53,7 +56,13 @@ export default defineConfig({
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        browserName: 'webkit',
+        video: {
+          mode: 'on-first-retry',
+          size: { width: 1920, height: 1080 }
+        },
+      }
     },
     {
       name: 'mobile',

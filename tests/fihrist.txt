@@ -16,4 +16,6 @@ testcase14: Faker, Add Products, Proceed To Checkout, .env, Address Details, lam
 testcase15: SingUp, CreateAccount, Faker, .env, lambda, 
 testcase16: Login, Add Products, Scroll, lambda, innerText(),
 testcase17: Add Products, Cart, Scroll, textContent(), 
-testcase18: Catagories, reklam
+testcase18: Catagories, left side bar, reklam
+testcase19: Products, left side bar, brand, reklam
+testcase20: Products, tüm ürünleri ekle loop, reklam, scroll500, count(), Cart, Login, 
