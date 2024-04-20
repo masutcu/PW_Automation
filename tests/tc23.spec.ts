@@ -2,25 +2,22 @@ import { test, expect } from '@playwright/test'
 import { faker } from '@faker-js/faker'
 
 
-/*Test Case 1: Register User
+/*Test Case 23: Verify address details in checkout page
 1. Launch browser
 2. Navigate to url 'http://automationexercise.com'
 3. Verify that home page is visible successfully
 4. Click on 'Signup / Login' button
-5. Verify 'New User Signup!' is visible
-6. Enter name and email address
-7. Click 'Signup' button
-8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-9. Fill details: Title, Name, Email, Password, Date of birth
-10. Select checkbox 'Sign up for our newsletter!'
-11. Select checkbox 'Receive special offers from our partners!'
-12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-13. Click 'Create Account button'
-14. Verify that 'ACCOUNT CREATED!' is visible
-15. Click 'Continue' button
-16. Verify that 'Logged in as username' is visible
-17. Click 'Delete Account' button
-18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+5. Fill all details in Signup and create account
+6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+7. Verify ' Logged in as username' at top
+8. Add products to cart
+9. Click 'Cart' button
+10. Verify that cart page is displayed
+11. Click Proceed To Checkout
+12. Verify that the delivery address is same address filled at the time registration of account
+13. Verify that the billing address is same address filled at the time registration of account
+14. Click 'Delete Account' button
+15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
 */
 test.describe.configure({ mode: 'serial' });
 
@@ -33,15 +30,22 @@ test.afterAll(async () => {
 });
 
 
-test.describe('TC1_Register User', () => {
+test.describe('Test Case 23: Verify address details in checkout page', () => {
     let randomFullName, randomEmail;
     test("Navigate url", async () => {
+        //reklam
+        await page.route("**/*", route => {
+            route.request().url().startsWith("https://googleads.") ?
+                route.abort() : route.continue();
+            return;
+        })
 
         //Navigate to url 'http://automationexercise.com' AND Verify that home page is visible successfully
         await page.goto('/');
         const title = await page.title();
         console.log("Sayfa Başlığı:", title);
         await expect(page).toHaveTitle(/Automation Exercise/);
+
     });
 
     test('Click on Signup / Login button And Verify New User Signup', async () => {
@@ -49,12 +53,9 @@ test.describe('TC1_Register User', () => {
         //await page.getByText("Login").click()
         //veya
         await page.getByRole('link', { name: ' Signup ' }).click()
-
         await expect(page.getByRole('heading', { name: "New User Signup!" })).toBeVisible()
 
-        //6. Enter name and email address
-        //7. Click 'Signup' button
-        //form alanını tanımladık 
+        //5. Fill all details in Signup and create account
 
         randomFullName = faker.person.fullName()
         console.log(randomFullName)
@@ -65,18 +66,15 @@ test.describe('TC1_Register User', () => {
         randomEmail = `${randomFullName.replace(' ', '')}${faker.number.int(1000)}@test.com`
         console.log('randomEmail', randomEmail)
 
-
         const singUpForm = page.locator('.signup-form').first()
         await singUpForm.getByPlaceholder('Name').pressSequentially(randomFullName, { delay: 100 })
         await singUpForm.getByPlaceholder('Email Address').fill(randomEmail)
         await singUpForm.getByRole('button', { name: 'Signup' }).click()
-        //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-        await expect(page.getByRole('heading', { name: 'Account Information' })).toBeVisible()
     })
 
-    test('Login Form Fill details: Title, Name, Email, Password, Date of birth', async () => {
+    test('Login Form Fill all details', async () => {
 
-        //9. Fill details: Title, Name, Email, Password, Date of birth     
+
         const loginForm = page.locator('.login-form')
         //radio button
         await loginForm.getByRole('radio', { name: 'Mr.' }).first().check()
@@ -91,56 +89,107 @@ test.describe('TC1_Register User', () => {
         await month.selectOption('August')
         const year = loginForm.locator('#years')
         await year.selectOption('1990')
-
-        //10. Select checkbox 'Sign up for our newsletter!'
         await loginForm.getByRole('checkbox', { name: "newsletter" }).click()
-
-        //11. Select checkbox 'Receive special offers from our partners!'
         await loginForm.locator("#optin").click()
-
-        //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        await loginForm.locator('#first_name').fill('mehmet')
-        await loginForm.locator('#last_name').fill('sutcu')
+        await loginForm.locator('#first_name').fill('Test')
+        await loginForm.locator('#last_name').fill('BySUTCU')
         await loginForm.locator('#company').fill('IBM')
-        await loginForm.locator('#address1').fill('Rose Strret')
+        await loginForm.locator('#address1').fill('Rose Street')
         await loginForm.locator('#address2').fill('California')
-
-        //country dropdown
         const country = loginForm.locator('#country')
         await country.selectOption('United States')
-
         await loginForm.locator('#state').fill('California')
         await loginForm.locator('#city').fill('San Francisco')
         await loginForm.locator('#zipcode').fill('94102')
         await loginForm.locator('#mobile_number').fill('+1 415-239-5065')
 
-        //13. Click 'Create Account button'
+        // Click 'Create Account button'
 
         await loginForm.getByRole('button', { name: 'Create Account' }).click()
 
-        //14. Verify that 'ACCOUNT CREATED!' is visible
+        //Verify that 'ACCOUNT CREATED!' is visible
         await expect(page.getByRole('heading', { name: "Account Created!" })).toBeVisible()
     })
     test('Logged in as username and Delete Account', async () => {
-        //15. Click 'Continue' button
+        // Click 'Continue' button
         await page.getByRole('link', { name: 'Continue' }).click()
 
-        //16. Verify that 'Logged in as username' is visible
+        // Verify that 'Logged in as username' is visible
         await expect(page.getByText(' Logged in as ')).toBeVisible
         await expect(page.getByText(randomFullName)).toBeVisible
 
+    });
+    test("Add Products in Cart", async () => {
+        //8. Add products to cart
+
+        await page.getByRole('link', { name: 'Products' }).click()
+        await page.getByText('View Product').first().scrollIntoViewIfNeeded()
+
+        await page.locator('.single-products').first().hover()
+        await page.locator('.add-to-cart').first().click()
+        await page.getByRole('button', { name: 'Continue Shopping' }).click()
+
+        await page.locator('(//div[@class="single-products"])[2]').hover()
+        await page.getByText('Add to cart').nth(3).click()
+        //9. Click 'Cart' button
+        await page.getByRole('link', { name: 'Cart' }).click()
+        //10. Verify that cart page is displayed
+        expect(await page.getByText('Shopping Cart').isVisible()).toBeTruthy();
+        //11. Click Proceed To Checkout
+        await page.getByText('Proceed To Checkout').click()
+
+
+    })
+
+
+
+
+    test('Verify Address Details', async () => {
+
+        //12. Verify that the delivery address is same address filled at the time registration of account
+        const addressBox = await page.locator('#address_delivery').first().innerText();
+        console.log("adres innertext",addressBox)
+
+        let state = process.env.state
+        console.log('state: ', process.env.state)
+        let city = process.env.city
+        console.log('city: ', process.env.city)
+        let street = process.env.street
+        console.log('street: ', process.env.street)
+        let tel = process.env.tel
+        console.log('tel: ', process.env.tel)
+        let company = process.env.company
+        console.log('company: ', process.env.company)
+        const variables = [state, city, street, tel, company];
+        
+        //lambda ile bool bir değişken 
+        const containsAllVariables = variables.every(variable => addressBox.includes(variable));
+        expect(containsAllVariables).toBeTruthy();
+        //13. Verify that the billing address is same address filled at the time registration of account
+
+        const invoiceBox = await page.locator('#address_invoice').innerText();
+        console.log("invoice innertext",invoiceBox)
+        
+        //lambda ile bool bir değişken 
+        const containsAllVariablesInInvoice = variables.every(variable => invoiceBox.includes(variable));
+        expect(containsAllVariablesInInvoice).toBeTruthy();
+
 
     });
-    test.skip('Delete account', async () => {
 
-        // Click 'Delete Account' button
+    test('Delete account', async () => {
+
+        //14. Click 'Delete Account' button
         await page.getByRole('link', { name: 'Delete Account' }).click()
 
-        // Verify 'ACCOUNT DELETED!' and click 'Continue' button
+        //15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         await expect(page.getByRole('heading', { name: "Account Deleted!" })).toBeVisible()
 
 
     });
+
+
+
 
 })
 

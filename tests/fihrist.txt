@@ -19,3 +19,7 @@ testcase17: Add Products, Cart, Scroll, textContent(),
 testcase18: Catagories, left side bar, reklam
 testcase19: Products, left side bar, brand, reklam
 testcase20: Products, tüm ürünleri ekle loop, reklam, scroll500, count(), Cart, Login, 
+testcase21: Product Review
+testcase22: ScrollEnd, Recomended Items, Add to cart,
+testcase23: SignUp, CreateAccount, Add Products, Verify DeliveryAdressDetail, Delete Account, scroll, .env, reklam, faker, lambda
+testcase24: SignUp, CreateAccount, Add Products, Verify DeliveryAdressDetail, DownloadFile, Delete Account, scroll, .env, reklam, faker, lambda    
