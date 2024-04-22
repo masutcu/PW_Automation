@@ -22,4 +22,6 @@ testcase20: Products, tüm ürünleri ekle loop, reklam, scroll500, count(), Car
 testcase21: Product Review
 testcase22: ScrollEnd, Recomended Items, Add to cart,
 testcase23: SignUp, CreateAccount, Add Products, Verify DeliveryAdressDetail, Delete Account, scroll, .env, reklam, faker, lambda
-testcase24: SignUp, CreateAccount, Add Products, Verify DeliveryAdressDetail, DownloadFile, Delete Account, scroll, .env, reklam, faker, lambda    
+testcase24: SignUp, CreateAccount, Add Products, Verify DeliveryAdressDetail, DownloadFile, Delete Account, scroll, .env, reklam, faker
+testcase25: Scrollbuttom, Screenshot,
+testcase26: ScrollTop, Screenshot,   
