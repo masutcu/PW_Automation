@@ -44,6 +44,12 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     let surname = 'SUTCU'
 
     test("Navigate url", async () => {
+        //reklamlar için
+        await page.route("**/*", route => {
+            route.request().url().startsWith("https://googleads.") ?
+                route.abort() : route.continue();
+            return;
+        })
         //2. Navigate to url 'http://automationexercise.com'
         //3. Verify that home page is visible successfully
         await page.goto('/');
@@ -75,6 +81,8 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
         } else {
             console.log('Sayfa adresi "viewcart" uzantısını içermiyor.');
         }
+
+        await page.waitForTimeout(1000)
 
         //7. Click Proceed To Checkout
         await page.getByText('Proceed To Checkout').click()
